@@ -1,0 +1,5 @@
+check,status
+ADSL has unique USUBJID,PASS
+ADAE subjects exist in ADSL,PASS
+ADTTE AVAL is positive,PASS
+ADTTE CNSR is 0 or 1,PASS
