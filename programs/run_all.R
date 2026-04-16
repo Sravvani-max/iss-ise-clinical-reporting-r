@@ -1,5 +1,10 @@
 source("programs/01_create_adsl.R")
 source("programs/02_create_adae.R")
 source("programs/03_create_ae_summary_table.R")
+source("programs/04_create_adtte.R")
+source("programs/05_create_km_plot.R")
+source("programs/06_qc_checks.R")
+source("programs/07_create_waterfall_plot.R")
+source("programs/08_create_define_metadata.R")
 
-message("ISS/ISE workflow complete")
+message("ISS/ISE workflow complete.")
