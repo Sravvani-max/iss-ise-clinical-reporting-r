@@ -25,12 +25,13 @@ waterfall <- adsl %>%
 write_csv(waterfall, "data/derived/adrs_waterfall.csv")
 
 p <- ggplot(waterfall, aes(x = reorder(USUBJID, CHG), y = CHG)) +
-  geom_col() +
-  geom_hline(yintercept = -30, linetype = "dashed") +
-  geom_hline(yintercept = 20, linetype = "dashed") +
+  geom_col(aes(fill = TRTA)) +
+scale_fill_manual(values = c("DrugA" = "steelblue", "Placebo" = "orange")) +
+ geom_hline(yintercept = -30, linetype = "dashed", color = "blue") +
+geom_hline(yintercept = 20, linetype = "dashed", color = "red") +
   coord_flip() +
   labs(
-    title = "Waterfall Plot of Best Percent Change in Tumor Size",
+    title = "Waterfall Plot of Best Percent Change from Baseline (RECIST-like Response)",
     x = "Subject",
     y = "Best % Change from Baseline"
   )
