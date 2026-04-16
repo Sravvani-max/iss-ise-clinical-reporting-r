@@ -1,0 +1,40 @@
+DATASET,VARIABLE,LABEL,TYPE,ROLE,CONTROLLED_TERMS,ORIGIN,DERIVATION
+ADSL,STUDYID,Study Identifier,text,Identifier,,CRF,
+ADSL,USUBJID,Unique Subject Identifier,text,Identifier,,CRF,
+ADSL,SITEID,Site Identifier,text,Identifier,,CRF,
+ADSL,AGE,Age,numeric,Timing,,CRF,
+ADSL,SEX,Sex,text,Qualifier,"F,M",CRF,
+ADSL,RACE,Race,text,Qualifier,"WHITE,ASIAN,BLACK OR AFRICAN AMERICAN,OTHER",CRF,
+ADSL,ARM,Planned Arm,text,Grouping,"Placebo,DrugA",CRF,
+ADSL,RANDDT,Randomization Date,date,Timing,,Derived,Simulated study randomization date
+ADSL,TRTSDT,Treatment Start Date,date,Timing,,Derived,Derived from RANDDT plus offset
+ADSL,EOSDT,End of Study Date,date,Timing,,Derived,Derived from TRTSDT plus offset
+ADSL,TRTA,Actual Treatment,text,Grouping,"Placebo,DrugA",Derived,Copied from ARM
+ADSL,TRTP,Planned Treatment,text,Grouping,"Placebo,DrugA",Derived,Copied from ARM
+ADSL,SAFFL,Safety Population Flag,text,Flag,"Y,N",Derived,Set to Y for treated subjects
+ADSL,ITTFL,Intent-to-Treat Population Flag,text,Flag,"Y,N",Derived,Set to Y for all randomized subjects
+ADAE,STUDYID,Study Identifier,text,Identifier,,ADSL,
+ADAE,USUBJID,Unique Subject Identifier,text,Identifier,,ADSL,
+ADAE,AESEQ,Sequence Number,numeric,Identifier,,Derived,
+ADAE,TRTA,Actual Treatment,text,Grouping,"Placebo,DrugA",ADSL,
+ADAE,AESOC,System Organ Class,text,Topic,,Derived,Simulated MedDRA SOC
+ADAE,AEDECOD,Dictionary-Derived Term,text,Topic,,Derived,Simulated MedDRA preferred term
+ADAE,AESTDT,Adverse Event Start Date,date,Timing,,Derived,
+ADAE,AEENDT,Adverse Event End Date,date,Timing,,Derived,
+ADAE,AESEV,Severity/Intensity,text,Qualifier,"MILD,MODERATE,SEVERE",Derived,
+ADAE,AESEVN,Severity Numeric Grade,numeric,Analysis,,Derived,MILD=1 MODERATE=2 SEVERE=3
+ADAE,AESER,Serious Event Flag,text,Flag,"Y,N",Derived,
+ADAE,TRTEMFL,Treatment-Emergent Flag,text,Flag,"Y,N",Derived,Set to Y if AESTDT >= TRTSDT
+ADTTE,STUDYID,Study Identifier,text,Identifier,,ADSL,
+ADTTE,USUBJID,Unique Subject Identifier,text,Identifier,,ADSL,
+ADTTE,TRTA,Actual Treatment,text,Grouping,"Placebo,DrugA",ADSL,
+ADTTE,PARAMCD,Parameter Code,text,Identifier,"PFS",Derived,
+ADTTE,PARAM,Parameter,text,Topic,"Progression-Free Survival",Derived,
+ADTTE,STARTDT,Analysis Start Date,date,Timing,,Derived,Set to TRTSDT
+ADTTE,ADT,Analysis Date,date,Timing,,Derived,Event date or censor date
+ADTTE,CNSR,Censoring Indicator,numeric,Analysis,"0,1",Derived,0=event 1=censored
+ADTTE,AVAL,Analysis Value,numeric,Analysis,,Derived,ADT - STARTDT + 1
+ADRS,STUDYID,Study Identifier,text,Identifier,,ADSL,
+ADRS,USUBJID,Unique Subject Identifier,text,Identifier,,ADSL,
+ADRS,TRTA,Actual Treatment,text,Grouping,"Placebo,DrugA",ADSL,
+ADRS,CHG,Best Percent Change from Baseline,numeric,Analysis,,Derived,Simulated best percent change
